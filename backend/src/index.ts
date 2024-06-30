@@ -1,6 +1,21 @@
 import express, { Request, Response } from "express"
 import cors from "cors"
-import "dotenv/config"
+import mongoose from "mongoose"
+import dotenv from "dotenv"
+
+// Explicitly load .env file
+dotenv.config()
+
+const mongoUri = process.env.MONGO_CONNECTION_STRING
+
+if (!mongoUri) {
+	throw new Error("MONGO_CONNECTION_STRING is not defined")
+}
+
+mongoose
+	.connect(mongoUri)
+	.then(() => console.log("MongoDB connected"))
+	.catch((err) => console.error("MongoDB connection error:", err))
 
 const app = express()
 app.use(express.json())
