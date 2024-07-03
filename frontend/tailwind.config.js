@@ -5,6 +5,7 @@ export default {
 		extend: {},
 		container: {
 			md: "10rem",
+			padding: "10rem",
 		},
 	},
 	plugins: [],
